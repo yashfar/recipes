@@ -1,8 +1,11 @@
 
-    <div  class="cursor-pointer box flex justify-between items-center w-[380px] p-4 shadow rounded-box hover:bg-gray-100 transition duration-500 ease-out h-full"  >
-        <div class="space-y-2">
-            <span class="text-xl font-bold">{{recipe.name}}</span>
-            <p class="leading-2 text-sm">{{recipe.description}}</p>
+    <div  class="cursor-pointer box flex flex-col-reverse sm:flex-row justify-between items-center w-full sm:w-[380px] sm:p-4 p-6 shadow rounded-box hover:bg-gray-100 transition duration-500 ease-out h-full"  >
+        <div class="sm:space-y-2 space-y-4 text-center sm:text-start sm:space-x-2">
+            <img class="w-[100px] h-[100px] object-cover mask mask-squircle sm:hidden mx-auto" [src]="recipe.pathImg" alt="">
+            <span class="text-xl font-bold ">{{recipe.name}}</span>
+            <p class="leading-2 sm:text-sm text-xs">{{recipe.description}}</p>
         </div>
-        <img class="w-[80px] h-[80px] object-cover mask mask-squircle" [src]="recipe.pathImg" alt="">
+        <img class="w-[80px] h-[80px] object-cover mask mask-squircle hidden sm:block " [src]="recipe.pathImg" alt="">
     </div>
+
+    

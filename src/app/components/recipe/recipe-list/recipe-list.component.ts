@@ -25,8 +25,16 @@ export class RecipeListComponent implements OnInit  {
 
     
   }
-  
+  scrollTo(){
+    
+  }
 
+  scrollToElement(elementId: string): void {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 
   // emitRecipeItem(value:Recipes){
   //   this.recipeService.recipeItem.emit(value);
