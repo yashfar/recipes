@@ -1,0 +1,31 @@
+<div >
+    <form (ngSubmit)="onAddItem(f)"  #f="ngForm" class="h-full flex flex-col">
+        <div class="flex gap-x-7 w-2/3 ">
+                <div class="flex-initial w-2/3">
+                    <label class="text-base font-smibold" for="name">Name</label>
+                    <input class="input input-bordered w-full" 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    ngModel
+                    required>
+                </div>
+                <div class="flex-initial w-1/3">
+                    <label class="text-base font-smibold" for="name">Amount</label>
+                    <input class="input input-bordered w-full" 
+                    type="number" 
+                    id="name" 
+                    name="amount" 
+                    ngModel
+                    required
+                    pattern="^[1-9]+[0-9]*$">
+                </div>
+        </div>
+        <div class="flex gap-x-4 py-4 h-[100px]">
+            <button class="btn btn-success" type="submit" [disabled]="!f.valid">{{editMode ? 'Update' : 'Add'}}</button>
+            <button *ngIf="editMode" class="btn btn-error" type="button" (click)="onDeleteItem()">Delete</button>
+            <button class="btn btn-warning" type="button" (click)="onClearItem()">Clear</button>
+        </div>
+</form>
+
+</div>

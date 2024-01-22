@@ -1,0 +1,28 @@
+<div class="w-full flex p-5 justify-between ">
+  <div class="flex-none  w-2/3">
+    <h1 class="text-xl font-bold py-3 px-8">Recipe Detail</h1> 
+    <div class="dropdown px-4 py-3">
+        <label tabindex="0" class="btn m-1">Manage Recipes</label>
+        <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+          <li (click)="addToShopping()"><a>To shopping List</a></li>
+          <li (click)="onEditRecipes()"><a>Edit Recipe</a></li>
+          <li (click)="onDeleteRecipes()"><a>Delete Recipe</a></li>
+        </ul>
+      </div>
+
+      <div class="w-full px-5 py-3">
+        <span class="text-base font-bold">Description: </span> {{item.description}}  
+      </div>
+      <div class="w-full px-5 py-3">
+        <span class="text-base font-bold">Ingredients: </span>
+       <ul class="flex gap-x-4 gap-y-4 py-5 flex-wrap">
+        <li  *ngFor="let ingredient of item.ingredient" class="shadow p-5 max-w-fit rounded-2xl text-sm font-semibold ">
+          {{ingredient.name}} - {{ingredient.amount}}
+        </li>
+       </ul>
+      </div>
+  </div>
+  <div class="max-w-full  h-full mask mask-squircle w-1/3">
+    <img class=" object-cover w-[250px]" [src]="item.pathImg"> 
+ </div>
+</div>

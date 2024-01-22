@@ -1,0 +1,37 @@
+<div class="p-5">
+    <form class="space-y-3" (ngSubmit)="onSubmit()" [formGroup]="recipeForm">
+        <div class="flex gap-x-2">
+            <button type="submit" class="btn btn-success hover:text-[#fff]">Save</button>
+            <button type="button" class="btn btn-warning hover:text-[#fff]" (click)="onCancel()">Cancel</button>
+        </div>
+        <div class="space-y-2">
+            <label class="text-base font-smibold" for="name">Name</label>
+            <input class="input input-bordered w-full" type="text" id="name" name="name" formControlName="name">
+        </div>
+        <div class="space-y-2 flex flex-col">
+            <label class="text-base font-smibold" for="pathImg">Image Url</label>
+            <!-- <input class="input input-bordered w-full" type="text" id="pathImg" name="pathImg" formControlName="pathImg" #imageUrl> -->
+            <input class="file-input file-input-bordered file-input-md w-full" type="file" id="pathImg" name="pathImg" formControlName="pathImg"  (change)="fileChangeHandler($event)" accept="image/*"  >
+        </div>
+        <div *ngIf="outputImage">
+            <img class="mask mask-squircle w-[250px]" [src]="outputImage" alt="imagePathPreview">
+        </div>
+        <div class="space-y-2">
+            <label class="text-base font-smibold" for="description">Description</label>
+            <textarea class="textarea textarea-bordered w-full" placeholder="Description" rows="6" id="description" name="description" formControlName="description"></textarea>       
+        </div>
+        <div class="space-y-3" formArrayName="ingredient">
+            <div  
+            *ngFor="let  recipeControl of recipeForm.get('ingredient')['controls']; let i = index" 
+            class="flex gap-x-3 items-center"
+            [formGroupName]="i" >
+                <input class="input input-bordered flex-none w-4/6" type="text" id="" name="" formControlName="name">
+                <input class="input input-bordered flex-none w-1/6" type="number" id="" name="" formControlName="amount">
+                <div class="w-10 h-10 bg-[#c7c7c7] flex items-center justify-center text-base text-[#fff] rounded-xl cursor-pointer" (click)="delateIngredient(i)">X</div>
+            </div>
+            <div>
+                <button class="btn btn-success" type="button" (click)="addIngredient()">Add Ingredient</button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,14 @@
+<div class="p-5 pb-0">
+    <button class="btn btn-success text-white" routerLink="new">New Recipe</button>
+</div>
+<div class="divider px-5 before:!bg-[#f1f1f1] after:!bg-[#f1f1f1]"></div> 
+<div class="px-5 pb-5 flex flex-wrap gap-5 ">
+    <app-recipe-item 
+        *ngFor="let recipe of recipes ; let i=index "
+        [recipe]="recipe" 
+        [routerLink]="[i]" 
+        routerLinkActive="active-item"
+    >
+    </app-recipe-item>
+</div>
+ 

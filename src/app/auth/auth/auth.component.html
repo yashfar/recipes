@@ -1,0 +1,33 @@
+
+<div class=" mx-auto w-[600px] h-screen flex flex-col items-center justify-start" >
+    <h2 class="py-5 font-bold">{{isLoginMode ? "Log-in" : "Sign-Up" }} </h2>
+    <div role="alert" class="alert alert-error w-[300px] my-5 text-white" *ngIf="error">
+      <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+      <span>{{error}}</span>
+    </div>
+    <form class="p-5 shadow flex flex-col gap-y-5" (ngSubmit)="onSubmit(f)" #f="ngForm" *ngIf="!isLoading">
+
+        <div>
+          <label class="text-base font-smibold" for="email">E-Mail</label>
+          <input class="input input-bordered w-full" type="email" id="email" ngModel name="email" required email #email="ngModel"  >
+          <span class="text-error w-auto" *ngIf="!email.valid && email.touched">Lorem ipsum, dolor sit amet consectetur </span>
+        </div>
+        <div>
+            <label class="text-base font-smibold" for="password">Password</label>
+            <input class="input input-bordered w-full" type="password" id="password"  name="password" ngModel required minlength="6">
+          </div>
+        <div class="flex gap-x-5">
+            <div class="">
+                <button class="btn btn-primary " type="submit"  [disabled]="!f.valid" >{{isLoginMode ? "Log-in" : "Sign-Up" }} </button>
+              </div>
+              <div class="">
+                  <button class="btn btn-primary " type="button"   (click)="onSwitchMode() ">Switch to {{isLoginMode ? "Sign-Up" :"Log-in" }}</button>
+              </div>
+        </div>
+        
+  
+    </form>
+    <div *ngIf="isLoading">
+      <app-loading></app-loading>
+    </div>
+  </div>

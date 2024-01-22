@@ -1,0 +1,8 @@
+
+    <div  class="cursor-pointer box flex justify-between items-center w-[380px] p-4 shadow rounded-box hover:bg-gray-100 transition duration-500 ease-out h-full"  >
+        <div class="space-y-2">
+            <span class="text-xl font-bold">{{recipe.name}}</span>
+            <p class="leading-2 text-sm">{{recipe.description}}</p>
+        </div>
+        <img class="w-[80px] h-[80px] object-cover mask mask-squircle" [src]="recipe.pathImg" alt="">
+    </div>
