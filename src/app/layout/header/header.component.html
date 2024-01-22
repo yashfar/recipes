@@ -1,7 +1,7 @@
 <div class="bg-gray-200 w-full flex justify-center ">
 
     <div class="flex justify-between h-[80px] max-w-full w-[1190px]  items-center px-10 lg:px-0">
-        <div class="flex items-center space-x-10">
+        <div class="flex items-center space-x-10 sm:justify-between sm:w-full">
            <a routerLink="/"> <img class="w-[200px] rounded-full" src="../../../assets/img/logo/logo-light.png" alt=""></a>
             <div>
                 <ul class="text-base font-semibold text-gray-600 hidden lg:flex">
@@ -11,7 +11,7 @@
                 </ul>
             </div>  
         </div>
-        <div class="flex-none flex items-center sm:space-x-4 space-x-2" *ngIf="isAuth">
+        <div class="flex-none flex items-center sm:space-x-4" *ngIf="isAuth">
             <ul  class="flex text-base font-semibold text-gray-600">
                 <li class="cursor-pointer py-2 px-4" (click)="onLogOut()" routerLinkActive="active-link" >Log-out</li>
             </ul>
