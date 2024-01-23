@@ -29,9 +29,11 @@ export class RecipeListComponent implements OnInit  {
 
 
   scrollToElement(elementId: string , i:any): void {
-    this.router.navigate([i] , { relativeTo: this.route });
     const element = document.getElementById(elementId);
-    element.scrollIntoView({ behavior: 'smooth' });
+    this.router.navigate([i] , { relativeTo: this.route });
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
   // emitRecipeItem(value:Recipes){
