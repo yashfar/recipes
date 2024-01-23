@@ -3,6 +3,7 @@ import { Recipes } from '../recipes.interface';
 import { RecipeService } from 'src/app/shared/recipe.service';
 import { Subscription } from 'rxjs';
 import { StorageService } from 'src/app/shared/storage.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-list',
@@ -10,7 +11,7 @@ import { StorageService } from 'src/app/shared/storage.service';
   styleUrls: ['./recipe-list.component.scss']
 })
 export class RecipeListComponent implements OnInit  {
-  constructor(private recipeService:RecipeService , private storageService:StorageService){}
+  constructor(private recipeService:RecipeService , private storageService:StorageService ,private router:Router ,  private route:ActivatedRoute){}
   recipes:Recipes[];
   subscription: Subscription;
   
@@ -25,15 +26,12 @@ export class RecipeListComponent implements OnInit  {
 
     
   }
-  scrollTo(){
-    
-  }
 
-  scrollToElement(elementId: string): void {
+
+  scrollToElement(elementId: string , i:any): void {
+    this.router.navigate([i] , { relativeTo: this.route });
     const element = document.getElementById(elementId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    element.scrollIntoView({ behavior: 'smooth' });
   }
 
   // emitRecipeItem(value:Recipes){
